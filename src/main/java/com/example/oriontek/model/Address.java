@@ -1,18 +1,17 @@
 package com.example.oriontek.model;
 
+import com.example.oriontek.domain.DataCreateAddress;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
-@Table(name = "ADDRESS")
-@Entity
 @Setter
 @Getter
+@Table(name = "ADDRESS")
+@Entity
 @NoArgsConstructor
 public class Address {
 
@@ -36,6 +35,14 @@ public class Address {
     private Customer customer;
 
     private LocalDate createdAt;
+
+public Address(DataCreateAddress dataCreateAddress){
+    this.street = dataCreateAddress.street();
+    this.city = dataCreateAddress.city();
+    this.state = dataCreateAddress.state();
+    this.zip = dataCreateAddress.zipCode();
+}
+
 
     @PrePersist
     private void setCreateAt() {

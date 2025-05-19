@@ -8,14 +8,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
-@Table(name = "CUSTOMER")
-@Entity
 @Setter
 @Getter
+@Table(name = "CUSTOMER")
+@Entity
 @NoArgsConstructor
 public class Customer {
 
@@ -40,7 +38,6 @@ public class Customer {
         this.email = dataCreateCustomer.email();
         this.phone = dataCreateCustomer.phone();
     }
-
 
     @PrePersist
     private void setCreateAt() {

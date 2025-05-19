@@ -9,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 
@@ -43,7 +44,6 @@ public class CustomerResource {
         return Response.status(Response.Status.OK).entity(responseCustomer).build();
     }
 
-
     @PUT()
     @Path("/update/{id}")
     @Consumes("application/json")
@@ -52,10 +52,11 @@ public class CustomerResource {
         try {
             DataCreateCustomer customer = customerService.updateCustomerById(dataCreateCustomer, id);
             return Response.ok(customer).build();
-        }catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             return Response
                     .status(Response.Status.NOT_FOUND).entity(STR."Customer with id: \{id} not found")
-                    .build();        }
+                    .build();
+        }
     }
 
 
