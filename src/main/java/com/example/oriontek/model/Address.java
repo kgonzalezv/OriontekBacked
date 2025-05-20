@@ -48,4 +48,11 @@ public Address(DataCreateAddress dataCreateAddress){
     private void setCreateAt() {
         this.createdAt = LocalDate.now();
     }
+
+    public Address(DataCreateAddress dataCreateAddress) {
+        this.street = dataCreateAddress.street();
+        this.city = dataCreateAddress.city();
+        this.state = dataCreateAddress.state();
+        this.zip = dataCreateAddress.zipCode();
+    }
 }
