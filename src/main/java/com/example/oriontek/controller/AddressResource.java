@@ -54,13 +54,13 @@ public class AddressResource {
     }
 
     @DELETE
-    @Path("/{customerId}")
-    public Response deleteAddressByCustomer(@PathParam("customerId") Long id) {
-        if (Objects.isNull(id)) {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity(STR."Customer with id: \{id} not found").build();
+    @Path("/{id}")
+    public Response deleteAddressById(@PathParam("id") Long id) {
+        try {
+            addressService.deleteAddressById(id);
+        } catch (NotFoundException e) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
-        addressService.getAllAddressByCustomerId(id);
         return Response.status(Response.Status.OK).build();
     }
 }

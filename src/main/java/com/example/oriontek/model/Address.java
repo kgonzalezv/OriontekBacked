@@ -1,5 +1,6 @@
 package com.example.oriontek.model;
 
+import com.example.oriontek.domain.DataCreateAddress;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,5 +41,12 @@ public class Address {
     @PrePersist
     private void setCreateAt() {
         this.createdAt = LocalDate.now();
+    }
+
+    public Address(DataCreateAddress dataCreateAddress) {
+        this.street = dataCreateAddress.street();
+        this.city = dataCreateAddress.city();
+        this.state = dataCreateAddress.state();
+        this.zip = dataCreateAddress.zipCode();
     }
 }

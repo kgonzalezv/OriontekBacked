@@ -43,9 +43,9 @@ public class AddressService {
 
     }
 
-    public void deleteAddressByCustomerId(Long id) {
-        addressRepository.deleteAddressByCustomerId(id);
+    public void deleteAddressById(Long id){
+        Address address = addressRepository.findById(id).orElseThrow(() -> new RuntimeException("Address not found"));
+        addressRepository.deleteById(address.getId());
     }
-
 
 }
