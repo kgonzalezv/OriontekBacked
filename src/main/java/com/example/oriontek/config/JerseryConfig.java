@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 public class JerseryConfig  extends ResourceConfig {
 
     public  JerseryConfig(){
-        register(CustomerResource.class);
-        register(AddressResource.class);
+        packages("com.example.oriontek.controller");
     }
 }
